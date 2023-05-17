@@ -4,6 +4,33 @@ from flask_mysqldb import MySQL
 from flask_testing import TestCase
 
 # Import your Flask app here
+app = Flask(__name__)
+
+# Mysql Connection
+if os.environ.get('MYSQL_HOST'):
+    app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST')
+else:
+    app.config['MYSQL_HOST'] = 'localhost'
+
+if os.environ.get('MYSQL_USER'):
+    app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
+else:
+    app.config['MYSQL_USER'] = 'root'
+
+if os.environ.get('MYSQL_PASSWORD'):
+    app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD')
+else:
+    app.config['MYSQL_PASSWORD'] = 'root'
+
+if os.environ.get('MYSQL_DB'):
+    app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB')
+else:
+    app.config['MYSQL_DB'] = 'flaskcrud'
+
+mysql = MySQL(app)
+
+# settings
+app.secret_key = "mysecretkey"
 
 class AppTestCase(TestCase):
 def create_app(self):
