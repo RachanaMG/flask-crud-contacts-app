@@ -2,6 +2,7 @@ import unittest
 from flask import Flask, template_rendered
 from flask_mysqldb import MySQL
 from flask_testing import TestCase
+from app import app
 
 # Import your Flask app here
 app = Flask(__name__)
