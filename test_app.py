@@ -6,7 +6,7 @@ from app import app
 
 # Import your Flask app here
 
-class AppTestCase(TestCase):
+class AppTestCase(unittest.TestCase):
 def create_app(self):
 app = Flask(__name__)
 app.config['TESTING'] = True
